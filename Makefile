@@ -6,7 +6,7 @@ PLAT=linux/amd64,linux/arm64/8
 .PHONY: default cached
 
 default:
-	docker buildx build --push --no-cache --platform $(PLAT) -t $(TAG) .
+	docker buildx build --push --no-cache --platform $(PLAT) -t hortaebi/$(TAG) .
 
 cached:
-	docker buildx build --push -t $(TAG) --platform $(PLAT) .
+	docker buildx build --push -t hortaebi/$(TAG) --platform $(PLAT) .
