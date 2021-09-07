@@ -11,6 +11,7 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.21.2/cmake-3.21.2
     cmake -DCMAKE_BUILD_TYPE:STRING=Release . && \
     make && \
     make install
+RUN apt-get install -y libck-dev
 COPY cmake-test /root/bin/
 COPY rc /root/rc
 CMD ["/bin/bash", "--init-file", "/root/rc"]
