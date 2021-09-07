@@ -1,0 +1,10 @@
+#!/bin/bash
+
+[ -f install-deps ] && ./install-deps
+[ -d Ubuntu-Debug ] && /bin/rm -rf Ubuntu-Debug
+
+mkdir Ubuntu-Debug && cd Ubuntu-Debug || exit 1
+
+cmake -DCMAKE_BUILD_TYPE=Debug .. &&
+    cmake --build . --config Debug &&
+    ctest -C Debug --output-on-failure

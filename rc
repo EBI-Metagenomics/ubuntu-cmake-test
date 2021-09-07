@@ -1,0 +1,4 @@
+#!/bin/bash
+
+case "$-" in *i*) [ -f "$HOME/.profile" ] && source "$HOME/.profile" ;; esac
+/root/bin/cmake-test
