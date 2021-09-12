@@ -1,6 +1,6 @@
 SHELL=/bin/bash
 
-TAG=ubuntu-cmake-test:20.10
+TAG=ubuntu-cmake-test:latest
 PLAT=linux/amd64,linux/arm64/8
 
 .PHONY: default
