@@ -1,9 +1,14 @@
 SHELL=/bin/bash
 
-TAG=ubuntu-cmake-test:latest
+IMG=ubuntu-cmake-test
 PLAT=linux/amd64,linux/arm64/8
 
-.PHONY: default
+.PHONY: all impish bionic
 
-default:
-	docker buildx build --push -t hortaebi/$(TAG) --platform $(PLAT) .
+all: impish bionic
+
+impish:
+	docker buildx build -f impish/Dockerfile --push -t hortaebi/$(IMG):21.10 --platform $(PLAT) .
+
+bionic:
+	docker buildx build -f bionic/Dockerfile --push -t hortaebi/$(IMG):18.04 --platform $(PLAT) .

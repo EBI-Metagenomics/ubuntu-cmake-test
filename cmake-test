@@ -5,6 +5,14 @@
 
 mkdir Ubuntu-Debug && cd Ubuntu-Debug || exit 1
 
-cmake -DCMAKE_BUILD_TYPE=Debug .. &&
+CMAKE_C_FLAGS="-fno-omit-frame-pointer -fno-optimize-sibling-calls -fsanitize=address -fsanitize=undefined -fsanitize-address-use-after-scope -fsanitize=leak"
+LINKER_FLAGS="-fsanitize=address -fsanitize=undefined"
+C_FLAGS_DEBUG="-g -O0"
+
+cmake -DCMAKE_BUILD_TYPE=Debug \
+    -DCMAKE_C_FLAGS="$CMAKE_C_FLAGS" \
+    -DCMAKE_SHARED_LINKER_FLAGS_INIT="$LINKER_FLAGS" \
+    -DCMAKE_EXE_LINKER_FLAGS_INIT="$LINKER_FLAGS" \
+    -DCMAKE_C_FLAGS_DEBUG="$C_FLAGS_DEBUG" .. &&
     cmake --build . --config Debug &&
     ctest -C Debug --output-on-failure
