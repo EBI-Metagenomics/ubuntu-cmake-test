@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM ubuntu:impish
+FROM ubuntu:focal
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ Europe/London
 ENV PATH "/root/bin:${PATH}"

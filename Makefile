@@ -1,14 +1,21 @@
 SHELL=/bin/bash
 
+USER=hortaebi
 IMG=ubuntu-cmake-test
 PLAT=linux/amd64,linux/arm64/8
 
-.PHONY: all impish bionic
+.PHONY: all bionic impish focal terminfo
 
-all: impish bionic
+all: bionic impish focal terminfo
+
+bionic: terminfo
+	docker buildx build -f $@/Dockerfile --push -t $(USER)/$(IMG):$@ --platform $(PLAT) .
 
 impish:
-	docker buildx build -f impish/Dockerfile --push -t hortaebi/$(IMG):21.10 --platform $(PLAT) .
+	docker buildx build -f $@/Dockerfile --push -t $(USER)/$(IMG):$@ --platform $(PLAT) .
 
-bionic:
-	docker buildx build -f bionic/Dockerfile --push -t hortaebi/$(IMG):18.04 --platform $(PLAT) .
+focal:
+	docker buildx build -f $@/Dockerfile --push -t $(USER)/$(IMG):$@ --platform $(PLAT) .
+
+terminfo:
+	./terminfo

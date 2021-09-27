@@ -1,0 +1,8 @@
+#!/bin/bash
+
+prj=https://github.com/kovidgoyal/kitty
+url=$prj/blob/master/terminfo/x/xterm-kitty?raw=true
+
+if [ ! -e xterm-kitty ]; then
+    curl $url --output xterm-kitty
+fi
