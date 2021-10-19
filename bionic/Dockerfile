@@ -7,6 +7,7 @@ RUN apt update && apt upgrade -y
 RUN apt install -y build-essential
 RUN apt install -y cmake curl wget libssl-dev
 RUN apt install -y gdb
+RUN apt install -y libsqlite3-dev
 COPY xterm-kitty /usr/share/terminfo/x/
 COPY cmake-test /root/bin/
 COPY rc /root/rc
