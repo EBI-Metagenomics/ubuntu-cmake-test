@@ -7,7 +7,7 @@ RUN apt update && apt upgrade -y
 RUN apt install -y build-essential
 RUN apt install -y cmake curl wget libssl-dev
 RUN apt install -y gdb kitty-terminfo
-RUN apt install -y libsqlite3-dev
+RUN apt install -y pkg-config
 COPY cmake-test /root/bin/
 COPY rc /root/rc
 CMD ["/bin/bash", "--init-file", "/root/rc"]
